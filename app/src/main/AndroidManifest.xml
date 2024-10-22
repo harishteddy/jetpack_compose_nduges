@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:name=".MainApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Harish_nudges"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Harish_nudges">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="netcore" />
+            </intent-filter>
+
+
+        </activity>
+
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ListScreenActivity"/>
+
+        <meta-data
+            android:name="SMT_APP_ID"
+            android:value="97e11d692e102ac422570ee5fd49a2a3" />
+
+        <meta-data
+            android:name="HANSEL_APP_ID"
+            android:value="O032WHH4VDVY9R9QE1486YHTA" />
+
+        <meta-data
+            android:name="HANSEL_APP_KEY"
+            android:value="KF7W5ANHUE36XMXMT4ETL146OJIOJFCYLSP438RY57SBRIAS2G" />
+
+        <meta-data
+            android:name="SMT_USE_ENCRYPTION"
+            android:value="true" />
+
+
+        <meta-data
+            android:name="SMT_COMPOSE_APP"
+            android:value="true" />
+    </application>
+
+</manifest>
