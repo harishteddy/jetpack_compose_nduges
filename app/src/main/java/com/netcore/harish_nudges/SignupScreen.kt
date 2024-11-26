@@ -25,11 +25,10 @@ import io.hansel.compose.smtTag
 
 @Composable
 fun SignupScreen(onSignupClick: (String, String, String) -> Unit) {
-
-    //SmtCompose.screenName = "SignupScreen"
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -41,8 +40,16 @@ fun SignupScreen(onSignupClick: (String, String, String) -> Unit) {
         Text(
             text = "Sign Up",
             style = MaterialTheme.typography.headlineLarge,
-            modifier = Modifier.smtTag(screenName = "SIGNUPSCREEN", tag = "singuptext")
+            modifier = Modifier.smtTag(screenName = "SIGNUPSCREEN", tag = "signuptext")
         )
+
+        if (errorMessage.isNotBlank()) {
+            Text(
+                text = errorMessage,
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -61,7 +68,8 @@ fun SignupScreen(onSignupClick: (String, String, String) -> Unit) {
             value = email,
             onValueChange = { email = it },
             label = { Text("Email") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .smtTag(screenName = "SIGNUPSCREEN", tag = "email")
         )
 
@@ -80,10 +88,18 @@ fun SignupScreen(onSignupClick: (String, String, String) -> Unit) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { onSignupClick(username, email, password) },
+            onClick = {
+                if (username.isNotBlank() && email.isNotBlank() && password.isNotBlank()) {
+                    errorMessage = ""
+                    onSignupClick(username, email, password)
+                } else {
+                    errorMessage = "All fields are required."
+                }
+            },
             modifier = Modifier.smtTag(screenName = "SIGNUPSCREEN", tag = "button_signup")
         ) {
             Text("Sign Up")
         }
     }
 }
+

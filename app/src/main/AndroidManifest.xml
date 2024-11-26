@@ -42,8 +42,7 @@
 
         </activity>
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ListScreenActivity"/>
+
 
         <meta-data
             android:name="SMT_APP_ID"

@@ -31,9 +31,10 @@ import java.lang.ref.WeakReference
 
 @Composable
 fun DashboardScreen(onNavigateToList: () -> Unit, onNavigateToProfile: () -> Unit) {
-   // SmtCompose.screenName = "DashboardScreen"
+    // Uncomment if required for tracking the screen
+    // SmtCompose.screenName = "DashboardScreen"
 
-    val payload : HashMap<String, Any> = HashMap()
+    val payload: HashMap<String, Any> = HashMap()
     payload["dashboard"] = "Harish"
 
     Smartech.getInstance(WeakReference(LocalContext.current)).trackEvent("DashBoardScreen", payload)
@@ -50,7 +51,7 @@ fun DashboardScreen(onNavigateToList: () -> Unit, onNavigateToProfile: () -> Uni
             modifier = Modifier.smtTag(screenName = "DASHBOARDSCREEN", tag = "dashboard_text")
         )
 
-        // Card for navigating to items list
+        // Card for navigating to the items list
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -59,13 +60,14 @@ fun DashboardScreen(onNavigateToList: () -> Unit, onNavigateToProfile: () -> Uni
             elevation = CardDefaults.cardElevation(4.dp)
         ) {
             Row(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier
+                    .padding(16.dp)
                     .smtTag(screenName = "DASHBOARDSCREEN", tag = "row"),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.List,
-                    contentDescription = "List Icon" // Provide content description for accessibility
+                    imageVector = Icons.Default.List, // Corrected to a valid vector
+                    contentDescription = "List Icon" // Accessibility description
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
@@ -84,13 +86,14 @@ fun DashboardScreen(onNavigateToList: () -> Unit, onNavigateToProfile: () -> Uni
             elevation = CardDefaults.cardElevation(4.dp)
         ) {
             Row(
-                modifier = Modifier.padding(16.dp)
-                .smtTag(screenName = "DASHBOARDSCREEN", tag = "row2"),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .smtTag(screenName = "DASHBOARDSCREEN", tag = "row2"),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = "Profile Icon" // Provide content description for accessibility
+                    imageVector = Icons.Default.Person, // Corrected to a valid vector
+                    contentDescription = "Profile Icon" // Accessibility description
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
