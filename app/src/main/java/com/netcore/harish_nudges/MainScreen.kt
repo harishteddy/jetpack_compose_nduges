@@ -1,5 +1,6 @@
 package com.netcore.harish_nudges
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -8,7 +9,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.netcore.android.Smartech
 import io.hansel.compose.SmtCompose
@@ -25,12 +28,22 @@ fun MainScreen(onLoginClick: () -> Unit, onSignupClick: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center // Added to center content vertically
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Add Image at the top
+        Image(
+            painter = painterResource(id = R.drawable.img_netcore), // Replace with your image resource
+            contentDescription = "Welcome Image",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp) // Adjust height as needed
+                .padding(bottom = 16.dp),
+            contentScale = ContentScale.Crop
+        )
+
         Text(
             text = "Welcome to Main Screen",
-            style = MaterialTheme.typography.headlineMedium, // Added style for better visibility
+            style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.smtTag(screenName = "MAINSCREEN", tag = "text")
         )
 
@@ -54,6 +67,7 @@ fun MainScreen(onLoginClick: () -> Unit, onSignupClick: () -> Unit) {
         }
     }
 }
+
 
 
 

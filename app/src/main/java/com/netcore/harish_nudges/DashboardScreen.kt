@@ -66,7 +66,7 @@ fun DashboardScreen(onNavigateToList: () -> Unit, onNavigateToProfile: () -> Uni
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.Default.List, // Corrected to a valid vector
+                    imageVector = Icons.AutoMirrored.Filled.List, // Corrected to a valid vector
                     contentDescription = "List Icon" // Accessibility description
                 )
                 Spacer(modifier = Modifier.width(16.dp))

@@ -3,6 +3,7 @@ package com.netcore.harish_nudges
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -16,7 +17,99 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import io.hansel.compose.SmtCompose
 import io.hansel.compose.smtTag
+@Composable
+fun LoginScreen(onLoginClick: (String, String) -> Unit) {
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Login",
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.smtTag(screenName = "LOGINSCREEN", tag = "logintext")
+        )
+
+        Spacer(modifier = Modifier.height(16.dp).smtTag(screenName = "LOGINSCREEN", tag = "spacer"))
+
+        OutlinedTextField(
+            value = username,
+            onValueChange = { username = it },
+            label = { Text("Username") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .smtTag(screenName = "LOGINSCREEN", tag = "username")
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .smtTag(screenName = "LOGINSCREEN", tag = "password")
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = {
+                if (username.isNotBlank() && password.isNotBlank()) {
+                    onLoginClick(username, password)
+                } else {
+                    // Handle empty fields
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .smtTag(screenName = "LOGINSCREEN", tag = "button")
+        ) {
+            Text(text = "Login")
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 @Composable
 fun LoginScreen(onLoginClick: (String, String) -> Unit) {
    // SmtCompose.screenName = "LoginScreen"
@@ -79,3 +172,4 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit) {
         }
     }
 }
+*/

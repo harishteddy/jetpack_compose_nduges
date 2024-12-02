@@ -76,6 +76,7 @@ dependencies {
 
 
 
-    implementation ("com.netcore.android:smartech-sdk:3.5.7")
+
+            implementation ("com.netcore.android:smartech-sdk:3.5.7")
     implementation ("com.netcore.android:smartech-nudges-compose:10.5.2")
 }

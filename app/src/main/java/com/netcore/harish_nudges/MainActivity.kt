@@ -70,10 +70,15 @@ fun AppNavigator() {
     val navController = rememberNavController()
 
     // Listen for navigation changes to update screen names in SmtCompose
-    LaunchedEffect(navController) {
+ /*   LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             SmtCompose.screenName = destination.route.toString()
         }
+    }*/
+
+
+    navController.addOnDestinationChangedListener { _, destination, _ ->
+        SmtCompose.screenName = destination.route.toString()
     }
 
     NavHost(

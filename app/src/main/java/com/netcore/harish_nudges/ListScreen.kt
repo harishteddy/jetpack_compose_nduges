@@ -42,7 +42,7 @@ internal fun ListScreen() {
             items((1..50).toList(), key = { it }) { item ->
                 // Each list item
                 ListItem(item)
-                Divider(color = Color.LightGray)
+                HorizontalDivider(color = Color.LightGray)
             }
         }
     }
